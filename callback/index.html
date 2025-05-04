@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autorizando...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            color: #ff0000;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            color: #333;
+            max-width: 600px;
+        }
+        
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #0088ff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px 0;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Obtener el código de autorización de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            
+            if (code) {
+                // Redireccionar a la página principal con el código
+                window.location.href = '../?auth_code=' + code;
+            } else {
+                // Error
+                document.body.innerHTML = `
+                    <h1>Error de autorización</h1>
+                    <p>No se pudo obtener la autorización de YouTube. Por favor, intenta nuevamente.</p>
+                    <a href="../">Volver a la página principal</a>
+                `;
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Procesando autorización...</h1>
+    <div class="loader"></div>
+    <p>Por favor espera mientras procesamos tu autorización con YouTube Music.</p>
+</body>
+</html>
