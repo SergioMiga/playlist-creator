@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Creator - Importar a YouTube Music</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Playlist Creator para YouTube Music</h1>
+    </header>
+    
+    <div class="container">
+        <div class="upload-section">
+            <h2>Sube tu archivo CSV</h2>
+            <p>Selecciona un archivo CSV con tus canciones</p>
+            <input type="file" id="csvFile" class="file-input" accept=".csv">
+            <label for="csvFile" class="file-label">Seleccionar archivo</label>
+            <p id="file-name" style="margin-top: 10px;"></p>
+        </div>
+        
+        <div id="playlist-form" class="hidden">
+            <h2>Detalles de la Playlist</h2>
+            <div class="form-group">
+                <label for="playlist-name">Nombre de la Playlist:</label>
+                <input type="text" id="playlist-name" placeholder="Mi Playlist Favorita">
+            </div>
+            <div class="form-group">
+                <label for="playlist-description">Descripción:</label>
+                <textarea id="playlist-description" placeholder="Una colección de mis canciones favoritas..."></textarea>
+            </div>
+        </div>
+        
+        <div id="preview-section" class="preview-section hidden">
+            <h2>Vista previa de canciones</h2>
+            <p>Se encontraron <span id="song-count">0</span> canciones en tu archivo:</p>
+            <div style="max-height: 300px; overflow-y: auto;">
+                <table id="preview-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Artista</th>
+                            <th>Título</th>
+                        </tr>
+                    </thead>
+                    <tbody id="preview-body"></tbody>
+                </table>
+            </div>
+            <button id="create-playlist-btn" style="margin-top: 1rem;">Crear Playlist en YouTube Music</button>
+        </div>
+        
+        <div id="result-message" class="hidden"></div>
+        
+        <div class="steps">
+            <h2>Cómo usar esta herramienta</h2>
+            <div class="step">
+                <h3>Paso 1: Prepara tu archivo CSV</h3>
+                <p>Crea un archivo CSV con columnas para "Artista" y "Título". Cada fila debe contener una canción.</p>
+                <p>Ejemplo:</p>
+                <pre>Artista,Título
+Daft Punk,Get Lucky
+The Weeknd,Blinding Lights
+Bad Bunny,Dakiti</pre>
+            </div>
+            <div class="step">
+                <h3>Paso 2: Sube tu archivo</h3>
+                <p>Haz clic en "Seleccionar archivo" y escoge tu archivo CSV.</p>
+            </div>
+            <div class="step">
+                <h3>Paso 3: Configura tu playlist</h3>
+                <p>Ingresa un nombre y descripción para tu playlist.</p>
+            </div>
+            <div class="step">
+                <h3>Paso 4: Autoriza YouTube Music</h3>
+                <p>Haz clic en "Crear Playlist" y autoriza la aplicación para acceder a tu cuenta de YouTube Music.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Playlist Creator © 2025 | Creado con ❤️</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
